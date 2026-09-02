@@ -2,6 +2,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import "tw-animate-css";
+
 @variant dark (&:is(.dark *));
 
 :root {
@@ -103,6 +105,7 @@
   }
 }
 
+/* PWA safe areas for notched devices */
 .safe-area-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -111,6 +114,7 @@
   padding-top: max(env(safe-area-inset-top, 0px), 8px);
 }
 
+/* Prevent text selection on nav items for native feel */
 nav a,
 nav button {
   -webkit-tap-highlight-color: transparent;
@@ -118,11 +122,13 @@ nav button {
   user-select: none;
 }
 
+/* Smooth scrolling for the app */
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
+/* Horizontal scroll container for mobile tables */
 .table-scroll {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;

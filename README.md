@@ -1,13 +1,18 @@
-# Spaced English
+# Flashcard Learning Platform
 
-Env: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, `DIRECT_URL`, `SEED_TEACHER_EMAIL`, `SEED_TEACHER_PASSWORD`.
+Nền tảng học từ vựng nhiều vai trò theo phạm vi đồ án đã chốt:
 
-```bash
-npm install
-npm run db:migrate
-# run supabase/profile-trigger.sql in Supabase SQL Editor
-npm run db:seed
-npm run build
-```
+- `ADMIN` / `TEACHER` / `STUDENT` qua Supabase Auth.
+- Giáo viên soạn thẻ thủ công hoặc import `.xlsx` (`front_text`, `back_text`, `example_sentence`).
+- Vòng đời nội dung Draft → Preview → Publish → Revision History → Rollback.
+- Sinh viên ôn theo FSRS với New/Learning/Review/Relearning và ReviewLog.
+- Next.js App Router monolith + Prisma + PostgreSQL (Supabase), deploy Vercel + Supabase.
+- Không AI, không MCP.
 
-Deploy this repo to Vercel with the same env vars.
+## Setup
+
+1. `cp .env.example .env` và điền biến Supabase/Postgres.
+2. Chạy `supabase/profile-trigger.sql` trong Supabase SQL Editor.
+3. `pnpm install && pnpm db:generate && pnpm db:migrate`.
+4. `pnpm db:seed` để tạo tài khoản giáo viên mẫu.
+5. `pnpm build && pnpm test`.
